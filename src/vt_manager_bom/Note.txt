@@ -1,0 +1,19 @@
+Task Dư
+1. Một sô api đang dang dở thì hoàn thiện nốt
+ví dụ: BOM_API_DOCUMENT, BOM_API_FILE -> status màu vàng
+2. Update api: /file/addNewFile
++ Thêm 1 trường dữ liệu: path_file vào trong bảng file để lưu đường dẫn file
++ update thêm trường dũ liệu này vào api
+3. Triển khai giải pháp docker cho cac dịch vụ lên server mới, sau khi có thông tin 
+4. Join vào làm thêm các api nghiệp vụ phần part.
+5. Xuất excel cần chỉnh sửa lại
+
+---------------------------------------------------------
+Task Kiên.
+1. Trao đổi lại về nghiệp vụ và rà soát lại các api với Kiên, defined nếu cần thiết
+2. Quay về con search - @dư sẽ handel task các api part giúp kiên
+3. Thêm part thay thê, buy từ list chưa đc
+4. Xóa list id part (tab-partbom/thay thế/mua)
+5. Danh sách part lấy theo phân trang
+6. check nghiệp vụ revesion/version
+7. 

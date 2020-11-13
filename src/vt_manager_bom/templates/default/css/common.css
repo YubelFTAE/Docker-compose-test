@@ -1,0 +1,25 @@
+.select2-hidden-accessible {
+    display: none;
+}
+.select2-container {
+    width: 100%;
+}
+
+.select2-container .select2-arrow {
+    background: #fff !important;
+}
+
+.select i {
+    margin-right: 3px !important;
+}
+.bl_changepass {
+	background: #fff;
+}
+.bl_changepass ul {
+	margin:0px;
+	padding: 0px;
+}
+.bl_changepass ul li {
+	padding: 5px;
+}
+

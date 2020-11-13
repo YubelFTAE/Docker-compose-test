@@ -1,0 +1,1 @@
+<script>window.location.href='<?php echo ROOTHOST;?>mgmt_products';</script>
