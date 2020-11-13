@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Welcome</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+        <link href="/css/newBook.css" rel="stylesheet" media="screen"/>
+		<meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    </head>
+    <body>
+        <div id="container">  
+            <div id="logo">
+                <img th:src="@{/img/banner.jpg}" id="banner" alt="library"/>
+            </div>
+            
+            <nav >
+                <div id="navigator">
+                    <ul>	
+                        <li><a href="#" th:href="@{/welcome}">HOME</a></li>
+                        <li><a href="#" th:href="@{/book/new}">New</a></li>
+                        <li><a href="#" th:href="@{/books}">List</a></li>
+                        <li><form th:action="@{/logout}" method="post">
+                                <input type="submit" value="Sign Out" id="btnLogout"/>
+                            </form>
+                        </li>
+                    </ul>
+            	</div>
+	    </nav>
+               
+        </div>
+    
+    </body>
+</html>

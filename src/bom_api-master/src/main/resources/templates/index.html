@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity4">
+    <head>
+        <title>Home Page</title>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+        <link href="/css/index.css" rel="stylesheet" media="screen"/>
+        <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    </head>
+    <body>
+        <div id="logo">
+                <img th:src="@{/img/header2.jpg}" id="banner" alt="image" width="100%"/>
+            </div>
+        <div id="container" class="container"> 
+            
+            <nav class="page-header">
+                <div id="navigator">
+                    <ul class="nav nav-pills">	
+                        <div sec:authorize="isAuthenticated()">
+                            <li>
+                                <a class="btn btn-success" th:href="@{/books}">Go to library</a>
+                            </li>
+                        </div> 
+                        
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="dropdown pull-right">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span sec:authentication="principal.username"/><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                  <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"/>  Logout</a></li>
+
+                                </ul>
+                            </li>
+                        </div> 
+                        <div sec:authorize="!isAuthenticated()">
+                            <li class="pull-right"><a href="#" th:href="@{/login}" >Ingresar</a></li>
+                        </div> 
+                    </ul>
+            	</div>
+	    </nav>
+            
+<!--            <div class="panel panel-default" style="margin-top: 30px;">
+                <div class="panel-heading">
+                    <h1>Bienvenido</h1>
+                </div>
+                <div class="panel-body">
+                    <p>Panel Content</p>
+                        
+                    <a class="btn btn-success" th:href="@{/books}">Go to library</a>
+                </div>
+            </div>-->
+            <div class="blog-post"  style="margin-top: 40px;">
+                <div>
+                    <h2>¿Qué es una biblioteca?</h2>
+                </div>
+                <div>
+                    <p class="lead">Una biblioteca es un lugar donde podemos encontrar libros o cualquier otro soporte de un texto, 
+                       como publicaciones, revistas, documentos, catálogos, etcétera. Una biblioteca puede ser a la vez 
+                       la pieza de mobiliario donde colocamos los libros o el edificio en sí, donde podemos consultar y 
+                       tomar prestados libros y demás.</p>
+                    
+                    <p class="lead">Una biblioteca es un sitio donde podemos recurrir para leer, buscar información y estudiar. 
+                        En muchas bibliotecas además se ofrecen servicios de búsqueda online, a través de Internet, y consulta 
+                        de libros digitales.</p>
+                        
+                    <p class="lead">En la mayoría de las bibliotecas los libros se encuentran organizados rigurosamente dentro de 
+                        diez grandes categorías (lo que se denomina “Clasificación Decimal Universal, o CDU). Estas categorías 
+                        respondes a la siguiente clasificación: Lengua, Artes, Ciencias exactas y Ciencias naturales, Ciencias 
+                        aplicadas y tecnología, Literatura, Filosofía y Psicología, Historia y Geografía, Ciencias sociales, Religión 
+                        y finalmente obras de referencia, es decir diccionarios o enciclopedias.</p>
+                    
+                    
+                    <h2>¿Cuál fue su origen?</h2>
+                    <p class="lead">Las bibliotecas no son un invento reciente, de hecho, se sabe de bibliotecas hace más de cuatro mil años. 
+                        Surgieron en la cultura mesopotámica con una función de conservación de tablillas de barro. La biblioteca como la 
+                        conocemos actualmente podemos decir que tuvo su origen en Grecia donde encontramos la famosa Biblioteca de Alejandría 
+                        o la del Pérgamo.</p>
+                    
+                    <p class="lead">Durante la Edad Media serán los monasterios los responsables de guardar y cuidar la cultura escrita. 
+                        A partir de la creación de la imprenta y de la apertura de las universidades se crearán nuevas bibliotecas destinadas 
+                        a eruditos y estudiosos.</p>
+                    
+                    <p class="lead">De esta manera se irá desarrollando el concepto moderno de biblioteca, accesible a toda persona interesada 
+                        y procuradora de información relevante a la cultura. Ya no existe en el mundo ni la censura ni la limitación al estudio 
+                        y las bibliotecas ayudan a fomentar la educación.</p>
+                    <!--<a class="btn btn-success" th:href="@{/books}">Go to library</a>-->
+                </div>
+            
+            </div>
+        </div>    
+        <footer class="footer">
+                
+            <div class="container">
+                <div class="footer-copyright text-center py-3 ">
+                    <h4>© 2018 Copyright</h4>
+                </div>
+            </div>
+
+        </footer>
+    </body>
+</html>

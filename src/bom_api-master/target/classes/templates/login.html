@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+>
+<head>
+    <title>Spring Security Example </title>
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <!--<link href="/css/login.css" rel="stylesheet" media="screen"/>-->
+    <link rel="stylesheet"
+		href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"/>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    
+        <script src="/js/login.js"></script> 
+</head>
+<body>
+
+
+
+<div id="container" class="container">
+    <nav class="page-header">
+        <div id="navigator">
+            <ul class="nav nav-pills">		
+                <li class="active"><a href="#" th:href="@{/}">Home</a></li>
+                <li><a href="#" th:href="@{/register}">Registro</a></li>
+                <div sec:authorize="isAuthenticated()">
+                    <li class="dropdown pull-right">
+                        <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span sec:authentication="principal.username"/><b class="caret"></b></a>
+                        <ul class="dropdown-menu">
+                          <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"/>  Logout</a></li>
+
+                        </ul>
+                    </li>
+                </div> 
+                        
+            </ul>
+        </div>
+    </nav>
+    
+    <div class="row" style="margin-top:20px">
+        <div class="col-xs-12 col-sm-6 col-md-4 col-sm-offset-3 col-md-offset-4">
+            <form th:action="@{/login}" method="post">
+                <fieldset>
+                    <h1>Please Sign In</h1>
+
+                    <div class="messages" th:if="${param.error}">
+                        <div class="alert alert-danger">
+                            Invalid username and password.
+                        </div>
+                    </div>
+                    <div class="messages" th:if="${param.logout}">
+                        <div class="alert alert-info">
+                            You have been logged out.
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" name="username" id="username" class="form-control input-lg"
+                               placeholder="UserName" required="true" autofocus="true"/>
+                    </div>
+                    <div class="form-group">
+                        <input type="password" name="password" id="password" class="form-control input-lg"
+                               placeholder="Password" required="true"/>
+                    </div>
+
+                    <div class="row">
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                            <input type="submit" class="btn btn-lg btn-primary btn-block" value="Sign In"/>
+                        </div>
+                        <div class="col-xs-6 col-sm-6 col-md-6">
+                        </div>
+                    </div>
+                </fieldset>
+            </form>
+        </div>
+    </div>
+
+</div>
+
+
+</body>
+</html>

@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Book List</title>
+        <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"></meta>
+        <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"></meta>
+        <link href="/css/bookList.css" rel="stylesheet" media="screen"></link>
+        <link rel="stylesheet"
+              href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"></link>
+	<script
+		src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+	<script
+		src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+        
+        <script src="/js/bookList.js"></script>   
+<!--        <script src="../static/js/bookList.js"></script>-->
+    </head>
+    <body>
+        <div id="container" class="container">     
+            <div id="logo" >
+                <img src="../static/css/img/header2.jpg" th:src="@{/img/header2.jpg}" id="banner" alt="image" width="100%"/>
+            </div>
+            
+            <nav class="page-header">
+                <div id="navigator">
+                    <ul class="nav nav-pills">	
+                        <li class="active"><a href="#" th:href="@{/}">HOME</a></li>
+                        <li><a href="#" th:href="@{/book/new}">New book</a></li>
+                        <li><a href="#" th:href="@{/books}">List books</a></li>
+                        <!--<li class="pull-right"><form th:action="@{/logout}" method="post">
+                                <input type="submit" value="Sign Out" class="btn btn-primary" id="btnLogout"/>
+                            </form>
+                        </li>-->
+                        <div sec:authorize="isAuthenticated()">
+                            <li class="dropdown pull-right">
+                                <a class="dropdown-toggle" data-toggle="dropdown" href="#"><span sec:authentication="principal.username"/><b class="caret"></b></a>
+                                <ul class="dropdown-menu">
+                                  <li><a th:href="@{/logout}"><span class="glyphicon glyphicon-log-out"/>  Logout</a></li>
+
+                                </ul>
+                          </li>
+                        </div>  
+                    </ul>
+                    
+            	</div>
+	    </nav>
+            
+            
+            <div id="cuerpo"  style="margin-bottom: 30px">
+                <div class="tableDiv" id="listBook">
+                    <h2>Lista de libros</h2>
+                    <br></br>
+                    <table id="table" class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Nro</th>
+                                <th>Nombre</th>
+                                <th>Genero</th>
+                                <th>Autor</th>
+                                <th>edit</th>
+                                <th>delete</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr th:each="book : ${books}">
+                                <td th:text="${book.id}">Id</td>
+                                <td th:text="${book.nombre}">Nombre</td>
+                                <td th:text="${book.genero}">Genero</td>
+                                <td th:text="${book.autor}">Autor</td>
+                                <td><a th:href="${'/book/edit/' + book.id}">Edit</a></td>
+                                <td><a th:href="${'/book/delete/' + book.id}">Delete</a></td>
+                            </tr>
+                        </tbody>
+                    </table>    
+                    
+                </div>
+                
+            </div>
+            
+            
+           
+            
+<!--            <div id="ocultar" class="btn btn-success">Click aquí</div>-->
+        </div>
+    </body>
+</html>
